@@ -1,12 +1,14 @@
 <template>
   <div>
+    <div class="sticky top-0">
+    </div>
     <div class="hero">
-      <AppBar></AppBar>
+      <AppBar class="appbar"></AppBar>
       <HeroSection></HeroSection>
     </div>
-      <AboutMe></AboutMe>
-      <Projects></Projects>
-      <TechStack></TechStack>
+    <AboutMe></AboutMe>
+    <Projects></Projects>
+    <TechStack></TechStack>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import TechStack from './components/TechStack.vue';
 <style scoped>
 .appbar {
   width: 100vw;
+  position: fixed;
 }
 
 .logo:hover {
@@ -45,5 +48,4 @@ import TechStack from './components/TechStack.vue';
   background-size: cover;
   /* Resize the background image to cover the entire container */
 }
-
 </style>

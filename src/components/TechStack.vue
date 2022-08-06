@@ -5,7 +5,7 @@
             <div class="flex flex-wrap justify-evenly">
                 <div v-for="(logo, i) in logos" :key="i" class="p-5 logo">
                     <img :src=logo.src :class="logo.class" />
-                    <span>{{ logo.name }}</span>
+                    <span class="font-sans text-xl">{{ logo.name }}</span>
                 </div>
             </div>
         </div>
@@ -17,92 +17,92 @@ let logos = [
     {
         src: "https://www.svgrepo.com/show/353884/html-5.svg",
         name: "Html 5",
-        class: "logo html"
+        class: "logo html hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/353623/css-3.svg",
         name: "Css 3",
-        class: "logo css"
+        class: "logo css hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/355081/js.svg",
         name: "Javascript",
-        class: "logo javascript"
+        class: "logo javascript hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/303600/typescript-logo.svg",
         name: "Typescript",
-        class: "logo typescript"
+        class: "logo typescript hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/374175/vue.svg",
         name: "Vue Js",
-        class: "logo vue"
+        class: "logo vue hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/373940/nuxt.svg",
         name: "Nuxt",
-        class: "logo nuxt"
+        class: "logo nuxt hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/354527/vuetifyjs.svg",
         name: "Vuetify",
-        class: "logo vuetify"
+        class: "logo vuetify hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/353498/bootstrap.svg",
         name: "Bootstrap",
-        class: "logo bootstrap"
+        class: "logo bootstrap hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/374118/tailwind.svg",
         name: "Tailwind",
-        class: "logo tailwind"
+        class: "logo tailwind hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/373604/flutter.svg",
         name: "Flutter",
-        class: "logo flutter"
+        class: "logo flutter hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/353631/dart.svg",
         name: "Dart",
-        class: "logo dart"
+        class: "logo dart hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/353668/dotnet.svg",
         name: ".NET",
-        class: "logo dotnet"
+        class: "logo dotnet hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/353622/c-sharp.svg",
         name: "C#",
-        class: "logo c-sharp"
+        class: "logo c-sharp hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg",
         name: "SQL SERVER",
-        class: "logo sql"
+        class: "logo sql hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/303266/nodejs-icon-logo.svg",
         name: "Node Js",
-        class: "logo node"
+        class: "logo node hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/331488/mongodb.svg",
         name: "Mongo DB",
-        class: "logo mongo"
+        class: "logo mongo hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/373623/git.svg",
         name: "Git",
-        class: "logo git"
+        class: "logo git hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/341847/github.svg",
         name: "GitHub",
-        class: "logo github"
+        class: "logo github hvr-grow"
     },
 
 ];
