@@ -8,6 +8,7 @@
     </div>
     <AboutMe></AboutMe>
     <Projects></Projects>
+    <Timeline></Timeline>
     <TechStack></TechStack>
   </div>
 </template>
@@ -18,6 +19,7 @@ import HeroSection from './components/HeroSection.vue'
 import AboutMe from './components/AboutMe.vue';
 import Projects from './components/Projects.vue';
 import TechStack from './components/TechStack.vue';
+import Timeline from './components/Timeline.vue';
 </script>
 
 <style scoped>
@@ -26,18 +28,10 @@ import TechStack from './components/TechStack.vue';
   position: fixed;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-
 .hero {
   background-image: url("https://i.giphy.com/media/YnlDGfCxyOIYTDp86I/giphy.webp");
   /* The image used */
-  background-color: #cccccc;
+  background-color: #04070b;
   /* Used if the image is unavailable */
   height: 100vh;
   /* You must set a specified height */
