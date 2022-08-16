@@ -1,28 +1,29 @@
 <template>
     <div class="projects">
-        <h1 class="h1 text-shadow text-white font-sans">Proyectos</h1>
+        <h1 class="h2 text-shadow text-white font-sans mb-5 sm:mb-8">Proyectos</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 project">
             <div v-for="(project, i) in projects" :key="i">
-                <div class="p-2 ml-3 mr-3 sm:p-4 lg:ml-12 lg:mr-6 rounded-xl md:p-8 bg-black grid grid-cols-1 xl:grid-cols-2 mb-12">
-                    <img :src="project.imgUrl" 
-                    @mouseover="mouseOver(i.toString(), project.gifUrl)" @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i" class="p-6 hvr-grow project-img">
+                <div
+                    class="p-2 ml-3 mr-3 sm:p-4 lg:ml-12 lg:mr-6 rounded-xl md:p-8 bg-black grid grid-cols-1 xl:grid-cols-2 mb-12">
+                    <img :src="project.imgUrl" @mouseover="mouseOver(i.toString(), project.gifUrl)"
+                        @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i"
+                        class="p-6 hvr-grow project-img">
                     <div class="p-2">
-                        <h1 class="h2 hvr-grow project-title" @click="goToProject(project.projectUrl)">{{project.name}}</h1>
+                        <span class="h3 hvr-grow project-title" @click="goToProject(project.projectUrl)">{{ project.name }}</span>
                         <div class="flex flex-wrap justify-around">
-                            <div v-for="(tech, k) in project.techStack" :key="k" class="chip mt-2">{{tech}}</div>
+                            <div v-for="(tech, k) in project.techStack" :key="k" class="chip mt-2">{{ tech }}</div>
                         </div>
                         <div style="min-height: 5rem;">
-                            <span class="subtitle">{{project.description}} </span>
+                            <span class="subtitle">{{ project.description }} </span>
                         </div>
                         <div class="flex justify-evenly mt-3">
                             <button
-                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50"
                                 @click="goToProject(project.projectUrl)">
                                 Link to project
                             </button>
-                            <button
-                                @click="goToProject(project.githubUrl)"
-                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            <button @click="goToProject(project.githubUrl)"
+                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50">
                                 Source Code
                             </button>
                         </div>
@@ -56,7 +57,7 @@ let projects = [
         name: "Comic",
         imgUrl: "/src/assets/images/comic.png",
         gifUrl: "/src/assets/images/comic.gif",
-        techStack: ["Flutter", "Dart"],
+        techStack: ["Flutter", "Dart", "Express", "Node"],
         description: "Web Abb desarrollada en Flutter, permite la busqueda de comics, sus detalles y autores.",
         projectUrl: "https://github.com/joseflorgaston/comics-webapp",
         githubUrl: "https://github.com/joseflorgaston/comics-webapp"
@@ -65,22 +66,22 @@ let projects = [
         name: "Otapp",
         imgUrl: "/src/assets/images/otapp.png",
         gifUrl: "/src/assets/images/otapp.png",
-        techStack: ["Flutter", "Dart"],
+        techStack: ["Flutter", "Dart", ".NetCore", "C#"],
         description: "Aplicación móvil de compra, renta y venta de vehículos desarrollada en Flutter para IOS y Android.",
         projectUrl: "https://github.com/joseflorgaston/comics-webapp",
         githubUrl: "https://github.com/joseflorgaston/comics-webapp"
     },
 ]
-function goToProject(url:string) {
+function goToProject(url: string) {
     window.open(url, '_blank')?.focus();
 }
-function mouseOver(id:string, src:string) {
-    let imageElement = document.getElementById("img-"+id) as HTMLImageElement;
+function mouseOver(id: string, src: string) {
+    let imageElement = document.getElementById("img-" + id) as HTMLImageElement;
     imageElement.src = src;
     console.log(imageElement.src);
 }
-function mouseLeave(id:string, src:string) {
-    let imageElement = document.getElementById("img-"+id) as HTMLImageElement;
+function mouseLeave(id: string, src: string) {
+    let imageElement = document.getElementById("img-" + id) as HTMLImageElement;
     imageElement.src = src;
 }
 </script>
@@ -99,12 +100,18 @@ function mouseLeave(id:string, src:string) {
     background-image: linear-gradient(#17365c, #010206);
 }
 
+.max-width-50 {
+    max-width: 48% !important;
+}
+
 .project {
     width: 100%;
 }
+
 .project-img {
     cursor: pointer;
 }
+
 .subtitle {
     margin-top: 20px !important;
     color: aliceblue;
@@ -125,8 +132,20 @@ function mouseLeave(id:string, src:string) {
 .project-title {
     color: #298efa;
 }
+
 .project-title:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+@media only screen and (max-width:600px) {
+    .chip{
+        min-width: 20%;
+        width: fit-content;
+        overflow: hidden;
+        max-width: 26%;
+        margin: 20 auto;
+        padding: 3%;
+    }
 }
 </style>

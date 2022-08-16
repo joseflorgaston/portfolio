@@ -1,7 +1,7 @@
 <template>
     <div class="tech-stack">
         <div class="container fluid">
-            <h1 class="h1 text-shadow font-sans">Stack Tecnologico</h1>
+            <span class="h2 text-shadow font-sans">Stack Tecnologico</span>
             <div class="flex flex-wrap justify-evenly">
                 <div v-for="(logo, i) in logos" :key="i" class="p-5 logo">
                     <img :src=logo.src :class="logo.class" />
@@ -43,6 +43,16 @@ let logos = [
         src: "https://www.svgrepo.com/show/373940/nuxt.svg",
         name: "Nuxt",
         class: "logo nuxt hvr-grow"
+    },
+    {
+        src: "https://www.svgrepo.com/show/373623/git.svg",
+        name: "Git",
+        class: "logo git hvr-grow"
+    },
+    {
+        src: "https://www.svgrepo.com/show/341847/github.svg",
+        name: "GitHub",
+        class: "logo github hvr-grow"
     },
     {
         src: "https://www.svgrepo.com/show/354527/vuetifyjs.svg",
@@ -94,16 +104,6 @@ let logos = [
         name: "Mongo DB",
         class: "logo mongo hvr-grow"
     },
-    {
-        src: "https://www.svgrepo.com/show/373623/git.svg",
-        name: "Git",
-        class: "logo git hvr-grow"
-    },
-    {
-        src: "https://www.svgrepo.com/show/341847/github.svg",
-        name: "GitHub",
-        class: "logo github hvr-grow"
-    },
 
 ];
 </script>
@@ -119,7 +119,7 @@ let logos = [
     width: 100%;
     height: fit-content;
     line-height: normal;
-    background-image: linear-gradient(#010206, #17365c);
+    background-image: linear-gradient(#17365c, #010206 );
 }
 
 .tech-stack-logo {
