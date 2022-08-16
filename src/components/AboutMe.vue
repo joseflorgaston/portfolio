@@ -1,8 +1,8 @@
 <template>
     <div class="about-me-section">
         <div
-            class="max-width grid md:grid-cols-2 grid-cols-1 items-center grid shadow-md dark:bg-gray-800 dark:border-gray-700 p-5">
-            <AboutMeImage1 />
+            class="max-width grid-end grid md:grid-cols-2 grid-cols-1 items-center grid dark:bg-gray-800 p-5">
+            <AboutMeImage1 class="order-last sm:order-first" />
             <div class="mt-6 md:mt-2">
                 <h5 class="mb-2 h2 text-center font-sans light-blue tracking-tight">
                     Acerca de mi
