@@ -1,7 +1,7 @@
 <template>
-    <div class="tech-stack">
+    <div id="technologies" class="tech-stack pt-12">
         <div class="container fluid">
-            <span class="h2 text-shadow font-sans">Stack Tecnologico</span>
+            <span class="h2 text-shadow text-white font-sans">Stack Tecnologico</span>
             <div class="flex flex-wrap justify-evenly">
                 <div v-for="(logo, i) in logos" :key="i" class="p-5 logo">
                     <img :src=logo.src :class="logo.class" />

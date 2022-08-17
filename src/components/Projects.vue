@@ -1,37 +1,41 @@
 <template>
-    <div class="projects">
-        <h1 class="h2 text-shadow text-white font-sans mb-5 sm:mb-8">Proyectos</h1>
-        <div class="grid grid-cols-1 lg:grid-cols-2 project">
-            <div v-for="(project, i) in projects" :key="i">
-                <div
-                    class="p-2 ml-3 mr-3 sm:p-4 lg:ml-12 lg:mr-6 rounded-xl md:p-8 bg-black grid grid-cols-1 xl:grid-cols-2 mb-12">
-                    <img :src="project.imgUrl" @mouseover="mouseOver(i.toString(), project.gifUrl)"
-                        @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i"
-                        class="p-6 hvr-grow project-img">
-                    <div class="p-2">
-                        <span class="h3 hvr-grow project-title" @click="goToProject(project.projectUrl)">{{ project.name }}</span>
-                        <div class="flex flex-wrap justify-around">
-                            <div v-for="(tech, k) in project.techStack" :key="k" class="chip mt-2">{{ tech }}</div>
-                        </div>
-                        <div style="min-height: 5rem;">
-                            <span class="subtitle">{{ project.description }} </span>
-                        </div>
-                        <div class="flex justify-evenly mt-3">
-                            <button
-                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50"
-                                @click="goToProject(project.projectUrl)">
-                                Link to project
-                            </button>
-                            <button @click="goToProject(project.githubUrl)"
-                                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50">
-                                Source Code
-                            </button>
+    <section id="projects">
+        <div class="projects pt-8">
+            <h1 class="h2 text-shadow text-white font-sans mb-5 sm:mb-8">Proyectos</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 project">
+                <div v-for="(project, i) in projects" :key="i">
+                    <div
+                        class="p-2 ml-3 mr-3 sm:p-4 lg:ml-12 lg:mr-6 rounded-xl md:p-8 bg-black grid grid-cols-1 xl:grid-cols-2 mb-12">
+                        <img :src="project.imgUrl" @mouseover="mouseOver(i.toString(), project.gifUrl)"
+                            @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i"
+                            class="p-6 hvr-grow project-img">
+                        <div class="p-2">
+                            <span class="h3 hvr-grow project-title" @click="goToProject(project.projectUrl)">{{
+                                    project.name
+                            }}</span>
+                            <div class="flex flex-wrap justify-around">
+                                <div v-for="(tech, k) in project.techStack" :key="k" class="chip mt-2">{{ tech }}</div>
+                            </div>
+                            <div style="min-height: 5rem;">
+                                <span class="subtitle">{{ project.description }} </span>
+                            </div>
+                            <div class="flex justify-evenly mt-3">
+                                <button
+                                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50"
+                                    @click="goToProject(project.projectUrl)">
+                                    Link to project
+                                </button>
+                                <button @click="goToProject(project.githubUrl)"
+                                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded max-width-50">
+                                    Source Code
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 <script setup lang="ts">
 let projects = [
@@ -139,7 +143,7 @@ function mouseLeave(id: string, src: string) {
 }
 
 @media only screen and (max-width:600px) {
-    .chip{
+    .chip {
         min-width: 20%;
         width: fit-content;
         overflow: hidden;

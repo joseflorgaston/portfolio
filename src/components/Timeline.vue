@@ -1,8 +1,8 @@
 <template>
-    <div class="timeline-area timeline-section">
+    <div id="professional_experience" class="timeline-area timeline-section">
         <div class="container">
-            <div class="timelines">
-                <h2>Experiencia Laboral</h2>
+            <div class="timelines mb-8">
+                <span class="h2 text-shadow font-sans">Experiencia Laboral</span>
             </div>
             <div class="all-timelines">
                 <!--SINGLE TIMELINE-->
@@ -21,13 +21,14 @@
                                     accountability and responsibility.<br>
                                 </li>
                                 <li class="py-1">
-                                    ● Refactored some of the old projects following the SOLID principles, making them
+                                    ● Refactored some of the old projects following the SOLID principles, making
+                                    them
                                     scalable.
                                 </li>
                             </ul>
                             <br>
                             <div class="my-1 sm:my-3 flex">
-                                <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span> 
+                                <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span>
                                 <span class="pl-1" style="width: fit-content !important;">Vuejs, NodeJs</span>
                             </div>
                         </span>
@@ -46,24 +47,27 @@
                             </div>
                             <ul class="md:text-end md:pl-10">
                                 <li class="py-1">
-                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their task
+                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their
+                                    task
                                     completion time by 50% <br>
                                 </li>
                                 <li class="py-1">
-                                    ● Created the frontend part of an admin dashboard template, reducing time for future
+                                    ● Created the frontend part of an admin dashboard template, reducing time for
+                                    future
                                     company’s projects.
                                 </li>
                                 <li class="py-1">
                                     ● Successfully modified numerous apps that increased good user-reviews by 70%
                                 </li>
                                 <li class="py-1">
-                                    ● Developed and implemented a task management system. Increasing efficiency levels
+                                    ● Developed and implemented a task management system. Increasing efficiency
+                                    levels
                                     by 40%.
                                 </li>
                             </ul>
                             <br>
                             <div class="flex flex-row my-1 sm:my-3">
-                                <span class="left-timeline" style="font-weight: bold;">Stack:</span> 
+                                <span class="left-timeline" style="font-weight: bold;">Stack:</span>
                                 <span class="left-timeline pl-1">Vuejs, Flutter, NodeJs, .netCore C#</span>
                             </div>
                         </span>
@@ -82,25 +86,29 @@
                             </div>
                             <ul class="text-start md:pl-10">
                                 <li class="py-1">
-                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their task
+                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their
+                                    task
                                     completion time by 50% <br>
                                 </li>
                                 <li class="py-1">
-                                    ● Created the frontend part of an admin dashboard template, reducing time for future
+                                    ● Created the frontend part of an admin dashboard template, reducing time for
+                                    future
                                     company’s projects.
                                 </li>
                                 <li class="py-1">
                                     ● Successfully modified numerous apps that increased good user-reviews by 70%
                                 </li>
                                 <li class="py-1">
-                                    ● Developed and implemented a task management system. Increasing efficiency levels
+                                    ● Developed and implemented a task management system. Increasing efficiency
+                                    levels
                                     by 40%.
                                 </li>
                             </ul>
                             <br>
                             <div class="flex my-1 sm:my-3">
-                                <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span> 
-                                <span class="pl-1" style="width: fit-content !important;">Vuejs, Flutter, NodeJs, .netCore C#</span>
+                                <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span>
+                                <span class="pl-1" style="width: fit-content !important;">Vuejs, Flutter, NodeJs,
+                                    .netCore C#</span>
                             </div>
                         </span>
                         <div class="t-square"></div>
@@ -280,9 +288,7 @@ p {
     margin-left: 2.5rem;
 }
 
-@media all and (max-width: 991px) {
-    
-}
+@media all and (max-width: 991px) {}
 
 @media all and (max-width: 768px) {
     .all-timelines::before {

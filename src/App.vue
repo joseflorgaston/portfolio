@@ -1,7 +1,5 @@
 <template>
   <div>
-    <div class="sticky top-0">
-    </div>
     <div class="hero">
       <AppBar class="appbar"></AppBar>
       <HeroSection></HeroSection>
@@ -10,6 +8,7 @@
     <Projects></Projects>
     <Timeline></Timeline>
     <TechStack></TechStack>
+    <ContactMe></ContactMe>
   </div>
 </template>
 
@@ -20,6 +19,7 @@ import AboutMe from './components/AboutMe.vue';
 import Projects from './components/Projects.vue';
 import TechStack from './components/TechStack.vue';
 import Timeline from './components/Timeline.vue';
+import ContactMe from './components/ContactMe.vue';
 </script>
 
 <style scoped>
