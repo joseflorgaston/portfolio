@@ -2,113 +2,28 @@
     <div id="professional_experience" class="timeline-area timeline-section">
         <div class="container">
             <div class="timelines mb-8">
-                <span class="h2 text-shadow font-sans">Experiencia Laboral</span>
+                <span class="h2 text-shadow font-sans">{{title}}</span>
             </div>
             <div class="all-timelines">
                 <!--SINGLE TIMELINE-->
-                <div class="single-timeline d-flex-2">
+                <div class="single-timeline d-flex-2" v-for="(experience, i) in experiences">
                     <div class="timeline-blank"></div>
                     <div class="timeline-text d-flex-2" style="align-items: flex-start;">
                         <span>
-                            <h6> Ene 2020 / Ene 2021 — ZentCode</h6>
+                            <h6 style="text-align: center; width:100%"> {{experience.dateRange}} — {{experience.company}}</h6>
                             <br>
                             <div class="flex flex-row my-1 sm:my-3">
-                                <span style="font-weight: bold;">Full Stack Developer</span>
+                                <span style="font-weight: bold; text-align: center; width:100%"> {{experience.role}}</span>
                             </div>
                             <ul class="text-start md:pl-10">
-                                <li class="py-1">
-                                    ● Developed and app that controls all company’s expenses, increasing the
-                                    accountability and responsibility.<br>
-                                </li>
-                                <li class="py-1">
-                                    ● Refactored some of the old projects following the SOLID principles, making
-                                    them
-                                    scalable.
+                                <li class="py-1" v-for="(achievement, k) in experience.achievements">
+                                    ● {{achievement}}<br>
                                 </li>
                             </ul>
                             <br>
                             <div class="my-1 sm:my-3 flex">
                                 <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span>
-                                <span class="pl-1" style="width: fit-content !important;">Vuejs, NodeJs</span>
-                            </div>
-                        </span>
-                        <div class="t-square"></div>
-                    </div>
-                </div>
-                <!--SINGLE TIMELINE-->
-                <div class="single-timeline d-flex-2">
-                    <div class="timeline-blank"></div>
-                    <div class="timeline-text d-flex-2" style="align-items: flex-start;">
-                        <span>
-                            <h6>Rugertek S.A. — Ene 2021 / Jun 2022 </h6>
-                            <br>
-                            <div class="flex flex-row my-1 sm:my-3">
-                                <span style="font-weight: bold;">Software Engineer</span>
-                            </div>
-                            <ul class="md:text-end md:pl-10">
-                                <li class="py-1">
-                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their
-                                    task
-                                    completion time by 50% <br>
-                                </li>
-                                <li class="py-1">
-                                    ● Created the frontend part of an admin dashboard template, reducing time for
-                                    future
-                                    company’s projects.
-                                </li>
-                                <li class="py-1">
-                                    ● Successfully modified numerous apps that increased good user-reviews by 70%
-                                </li>
-                                <li class="py-1">
-                                    ● Developed and implemented a task management system. Increasing efficiency
-                                    levels
-                                    by 40%.
-                                </li>
-                            </ul>
-                            <br>
-                            <div class="flex flex-row my-1 sm:my-3">
-                                <span class="left-timeline" style="font-weight: bold;">Stack:</span>
-                                <span class="left-timeline pl-1">Vuejs, Flutter, NodeJs, .netCore C#</span>
-                            </div>
-                        </span>
-                        <div class="t-square"></div>
-                    </div>
-                </div>
-                <!--SINGLE TIMELINE-->
-                <div class="single-timeline d-flex-2">
-                    <div class="timeline-blank"></div>
-                    <div class="timeline-text d-flex-2" style="align-items: flex-start;">
-                        <span>
-                            <h6 class="text-start">jun 2022 / Ahora — ITTI Digital </h6>
-                            <br>
-                            <div class="flex flex-row my-1 sm:my-3">
-                                <span style="font-weight: bold;">Software Engineer</span>
-                            </div>
-                            <ul class="text-start md:pl-10">
-                                <li class="py-1">
-                                    ● Trained an entire team of 4 people in Vue, Flutter and Node, reducing their
-                                    task
-                                    completion time by 50% <br>
-                                </li>
-                                <li class="py-1">
-                                    ● Created the frontend part of an admin dashboard template, reducing time for
-                                    future
-                                    company’s projects.
-                                </li>
-                                <li class="py-1">
-                                    ● Successfully modified numerous apps that increased good user-reviews by 70%
-                                </li>
-                                <li class="py-1">
-                                    ● Developed and implemented a task management system. Increasing efficiency
-                                    levels
-                                    by 40%.
-                                </li>
-                            </ul>
-                            <br>
-                            <div class="flex my-1 sm:my-3">
-                                <span class="tech-stack" style="font-weight: bold; width: fit-content;">Stack:</span>
-                                <span class="pl-1" style="width: fit-content !important;">Vuejs, Flutter, NodeJs,
-                                    .netCore C#</span>
+                                <span class="pl-1" style="width: fit-content !important;">{{experience.stack}}</span>
                             </div>
                         </span>
                         <div class="t-square"></div>
@@ -118,6 +33,101 @@
         </div>
     </div>
 </template>
+<script setup lang="ts">import { computed, ref, Ref, watch } from 'vue';
+import { useI18NStore } from '../store/i18n';
+import { Experience } from '../../models/Experience';
+
+const i18nStore = useI18NStore();
+const lang = computed(() => {
+    return i18nStore.lang;
+});
+let experiences: Ref<Experience[]> = ref([]);
+let achievements: Ref<string[][]> = ref([]);
+let title: Ref<string> = ref("");
+
+watch(lang, async (newLang) => {
+    setExperiences(newLang);
+})
+
+setExperiences(lang.value);
+
+function setExperiences(newLang: string) {
+    experiences.value = [
+        {
+            dateRange: "Ene 2020 / Ene 2021",
+            company: "ZentCode",
+            role: "Full Stack Software Engineer",
+            achievements: [
+                "Developed and app that controls all company’s expenses, increasing the accountability and responsibility.",
+                "Refactored some of the old projects following the SOLID principles, making them scalable"
+            ],
+            stack: "Vuejs, NodeJs"
+        },
+        {
+            dateRange: "Ene 2021 / Jun 2022",
+            company: "Rugertek S.A.",
+            role: "Full Stack Software Engineer",
+            achievements: [
+                "Trained an entire team of 4 people in Vue, Flutter and Node, reducing their task completion time by 50%.",
+                "Created the frontend part of an admin dashboard template, reducing time for future company’s projects",
+                "Successfully modified numerous apps that increased good user-reviews by 70%",
+                "Developed and implemented a task management system. Increasing efficiency levels by 40%"
+            ],
+            stack: "Vuejs, Flutter, NodeJs, .NetCore C#"
+        },
+        {
+            dateRange: "Jun 2022 / Ahora",
+            company: "ITTI Digital",
+            role: "Full Stack Software Engineer",
+            achievements: [
+                "Contributed to the development, design and documentation of customizable widgets for a base app for future projects.",
+                "Successfully implemented a way to manage packages of projects running on devices with different operating systems"
+            ],
+            stack: "Flutter, Vuejs, NodeJs, .netCore C#"
+        }
+    ]
+    if(newLang === 'English') {
+        title.value = "Professional Experience";
+        achievements.value = [
+            [
+                "Developed and app that controls all company’s expenses, increasing the accountability and responsibility.",
+                "Refactored some of the old projects following the SOLID principles, making them scalable"
+            ],
+            [
+                "Trained an entire team of 4 people in Vue, Flutter and Node, reducing their task completion time by 50%.",
+                "Created the frontend part of an admin dashboard template, reducing time for future company’s projects",
+                "Successfully modified numerous apps that increased good user-reviews by 70%",
+                "Developed and implemented a task management system. Increasing efficiency levels by 40%"
+            ],
+            [
+                "Contributed to the development, design and documentation of customizable widgets for a base app for future projects.",
+                "Successfully implemented a way to manage packages of projects running on devices with different operating systems"
+            ]
+        ]
+    } else if(newLang === 'Español') {
+        title.value = "Experiencia Laboral";
+        achievements.value = [
+            [
+                "Desarrollé una app que controlla los gastos de la compañía, mejorando el control de gastos.",
+                "Refactorizé algunos proyectos viejos siguiendo los principios SOLID, mejorando la escalabilidad"
+            ],
+            [
+                "Entrené un equipo completo de 4 personas en Vuejs, Flutter y Nodejs, reduciendo el tiempo de finalización de las tareas hasta en un 50%.",
+                "Desarrollé un template base de un admin dashboard, reduciendo el tiempo de finalización de proyectos futuros",
+                "Refactorizé exitosamente algunas apps, mejorando las reseñas hasta en un 70%",
+                "Desarrollé e implementé un sistema de manejo de trabajo personalizado. Incrementando los niveles de eficiencia en un 40%"
+            ],
+            [
+                "Contribuí en el desarrollo, diseño y documentación de widgets customizables para una app base para futuros proyectos.",
+                "Implementé exitosamente una manera de manejar dependencias de projectos corriendo en distintos dispositivos con sistemas operativos diferentes"
+            ]
+        ]
+    }
+    for (let i = 0; i < experiences.value.length; i++) {
+        experiences.value[i].achievements = achievements.value[i];
+    }
+}
+</script>
 <style scoped>
 * {
     margin: 0;

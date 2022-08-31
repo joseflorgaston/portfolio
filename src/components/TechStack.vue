@@ -1,10 +1,10 @@
 <template>
     <div id="technologies" class="tech-stack pt-12">
         <div class="container fluid">
-            <span class="h2 text-shadow text-white font-sans">Stack Tecnologico</span>
+            <span class="h2 text-shadow text-white font-sans">{{title}}</span>
             <div class="flex flex-wrap justify-evenly">
                 <div v-for="(logo, i) in logos" :key="i" class="p-5 logo">
-                    <img :src=logo.src :class="logo.class" />
+                    <img :src=logo.src :class="logo.class" :title="logo.name" />
                     <span class="font-sans text-xl">{{ logo.name }}</span>
                 </div>
             </div>
@@ -12,12 +12,26 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { Ref, ref, computed, watch } from 'vue';
+import { useI18NStore } from '../store/i18n';
+
+const i18nStore = useI18NStore();
+let title: Ref<string> = ref("");
+const lang = computed(() => {
+    return i18nStore.lang;
+});
+
+watch(lang, async (newLang) => {
+    if(newLang === 'English') title.value = "Tech Stack"
+    if(newLang === 'Español') title.value = "Stack Tecnológico"
+});
+
+
 let logos = [
     {
         src: "https://www.svgrepo.com/show/353884/html-5.svg",
         name: "Html 5",
-        class: "logo html hvr-grow"
+        class: "logo html hvr-grow",
     },
     {
         src: "https://www.svgrepo.com/show/353623/css-3.svg",

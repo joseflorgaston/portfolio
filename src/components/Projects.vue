@@ -1,13 +1,13 @@
 <template>
     <section id="projects">
         <div class="projects pt-8">
-            <h1 class="h2 text-shadow text-white font-sans mb-5 sm:mb-8">Proyectos</h1>
+            <h1 class="h2 text-shadow text-white font-sans mb-5 sm:mb-8">{{title}}</h1>
             <div class="grid grid-cols-1 lg:grid-cols-2 project">
                 <div v-for="(project, i) in projects" :key="i">
                     <div
                         class="p-2 ml-3 mr-3 sm:p-4 lg:ml-12 lg:mr-6 rounded-xl md:p-8 bg-black grid grid-cols-1 xl:grid-cols-2 mb-12">
                         <img :src="project.imgUrl" @mouseover="mouseOver(i.toString(), project.gifUrl)"
-                            @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i"
+                            @mouseleave="mouseLeave(i.toString(), project.imgUrl)" :id="'img-' + i" :title="project.title"
                             class="p-6 hvr-grow project-img">
                         <div class="p-2">
                             <span class="h3 hvr-grow project-title" @click="goToProject(project.projectUrl)">{{
@@ -17,7 +17,7 @@
                                 <div v-for="(tech, k) in project.techStack" :key="k" class="chip mt-2">{{ tech }}</div>
                             </div>
                             <div style="min-height: 5rem;">
-                                <span class="subtitle">{{ project.description }} </span>
+                                <span class="subtitle">{{ descriptions[i] }} </span>
                             </div>
                             <div class="flex justify-evenly mt-3">
                                 <button
@@ -38,51 +38,94 @@
     </section>
 </template>
 <script setup lang="ts">
-let projects = [
-    {
-        name: "Zardus Admin",
-        imgUrl: "/src/assets/images/zardus.png",
-        gifUrl: "/src/assets/images/zardus.gif",
-        techStack: ["Vue", "Nuxt", "Express", "Node"],
-        description: "Sistema de administracion de la empresa Zardus S.A. Sistema web que calcula el stock de los productos, permite controlar los pedidos, compras, gastos y ganancias de la empresa Zardus.",
-        projectUrl: "https://zardus-admin.com",
-        githubUrl: "https://github.com/joseflorgaston/zardus-admin/commits/main"
-    },
-    {
-        name: "AM Solutions",
-        imgUrl: "/src/assets/images/amsolutions.jpg",
-        gifUrl: "/src/assets/images/amsolutions.gif",
-        techStack: ["Vue", "Vite", "Bootstrap", "JQuery"],
-        description: "Landing page de la empresa AM Solutions. Desarrollada con VueJs, Vite y Bootstrap",
-        projectUrl: "https://spiffy-clafoutis-b219f9.netlify.app/",
-        githubUrl: "https://github.com/joseflorgaston/startup"
-    },
-    {
-        name: "Comic",
-        imgUrl: "/src/assets/images/comic.png",
-        gifUrl: "/src/assets/images/comic.gif",
-        techStack: ["Flutter", "Dart", "Express", "Node"],
-        description: "Web Abb desarrollada en Flutter, permite la busqueda de comics, sus detalles y autores.",
-        projectUrl: "https://github.com/joseflorgaston/comics-webapp",
-        githubUrl: "https://github.com/joseflorgaston/comics-webapp"
-    },
-    {
-        name: "Otapp",
-        imgUrl: "/src/assets/images/otapp.png",
-        gifUrl: "/src/assets/images/otapp.png",
-        techStack: ["Flutter", "Dart", ".NetCore", "C#"],
-        description: "Aplicación móvil de compra, renta y venta de vehículos desarrollada en Flutter para IOS y Android.",
-        projectUrl: "https://github.com/joseflorgaston/comics-webapp",
-        githubUrl: "https://github.com/joseflorgaston/comics-webapp"
-    },
-]
+import { computed, Ref, ref, watch } from 'vue';
+import { Project } from '../../models/Project';
+import { useI18NStore } from '../store/i18n';
+
+const i18nStore = useI18NStore();
+let descriptions: Ref<string[]> = ref([]);
+let title: Ref<string> = ref("");
+const lang = computed(() => {
+    return i18nStore.lang;
+});
+let projects: Ref<Project[]> = ref(
+    [
+        {
+            name: "Zardus Admin",
+            imgUrl: "/src/assets/images/zardus.png",
+            gifUrl: "/src/assets/images/zardus.gif",
+            techStack: ["Vue", "Nuxt", "Express", "Node"],
+            description: "Sistema de administracion de la empresa Zardus S.A. Sistema web que calcula el stock de los productos, permite controlar los pedidos, compras, gastos y ganancias de la empresa Zardus.",
+            projectUrl: "https://zardus-admin.com",
+            githubUrl: "https://github.com/joseflorgaston/zardus-admin/commits/main",
+            title: "Zardus"
+        },
+        {
+            name: "AM Solutions",
+            imgUrl: "/src/assets/images/amsolutions.jpg",
+            gifUrl: "/src/assets/images/amsolutions.gif",
+            techStack: ["Vue", "Vite", "Bootstrap", "JQuery"],
+            description: "Landing page de la empresa AM Solutions. Desarrollada con VueJs, Vite y Bootstrap",
+            projectUrl: "https://spiffy-clafoutis-b219f9.netlify.app/",
+            githubUrl: "https://github.com/joseflorgaston/startup",
+            title: "AM Solutions"
+        },
+        {
+            name: "Comic",
+            imgUrl: "/src/assets/images/comic.png",
+            gifUrl: "/src/assets/images/comic.gif",
+            techStack: ["Flutter", "Dart", "Express", "Node"],
+            description: "Web Abb desarrollada en Flutter, permite la busqueda de comics, sus detalles y autores.",
+            projectUrl: "https://github.com/joseflorgaston/comics-webapp",
+            githubUrl: "https://github.com/joseflorgaston/comics-webapp",
+            title: "Comic WebApp"
+        },
+        {
+            name: "Otapp",
+            imgUrl: "/src/assets/images/otapp.png",
+            gifUrl: "/src/assets/images/otapp.png",
+            techStack: ["Flutter", "Dart", ".NetCore", "C#"],
+            description: "Aplicación móvil de compra, renta y venta de vehículos desarrollada en Flutter para IOS y Android.",
+            projectUrl: "https://github.com/joseflorgaston/comics-webapp",
+            githubUrl: "https://github.com/joseflorgaston/comics-webapp",
+            title: "Otapp"
+        },
+    ]
+);
+
+watch(lang, async (newLang) => {
+    setProjectsDescription(newLang);
+});
+
+setProjectsDescription(lang.value);
+
+function setProjectsDescription(newLang: string) {
+    if (newLang === "Español") {
+        title.value = "Proyectos";
+        descriptions.value = [
+            "Sistema de administracion de la empresa Zardus S.A. Sistema web que calcula el stock de los productos, permite controlar los pedidos, compras, gastos y ganancias de la empresa Zardus.",
+            "Landing page de la empresa AM Solutions. Desarrollada con VueJs, Vite y Bootstrap",
+            "Web App desarrollada en Flutter, permite la busqueda de comics, sus detalles y autores.",
+            "Aplicación móvil de compra, renta y venta de vehículos desarrollada en Flutter para IOS y Android."
+        ];
+    }
+    if (newLang === "English") {
+        title.value = "Projects"
+        descriptions.value = [
+            "Administration system of the company Zardus S.A. Web system that calculates the stock of products, allows users control the orders, purchases, expenses and profits of the company Zardus.",
+            "AM Solutions Landing Page. Developed with VueJs, Vite and Bootstrap",
+            "Web App developed in Flutter, allows the search of comics, their details and authors.",
+            "Mobile application for buying, renting and selling vehicles developed in Flutter for IOS and Android."
+        ];
+        return;
+    }
+}
 function goToProject(url: string) {
     window.open(url, '_blank')?.focus();
 }
 function mouseOver(id: string, src: string) {
     let imageElement = document.getElementById("img-" + id) as HTMLImageElement;
     imageElement.src = src;
-    console.log(imageElement.src);
 }
 function mouseLeave(id: string, src: string) {
     let imageElement = document.getElementById("img-" + id) as HTMLImageElement;

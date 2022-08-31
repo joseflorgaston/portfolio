@@ -5,17 +5,10 @@
                 <AboutMeImage1 class="order-last sm:order-first" />
                 <div class="mt-6 md:mt-2">
                     <h5 class="mb-2 h2 text-center font-sans light-blue tracking-tight">
-                        Acerca de mi
+                        {{aboutMe.title}}
                     </h5>
                     <p class="mb-3 md:px-6 font-normal leading-5 text-white-700 mt-3 md:mt-8 dark:text-gray-400">
-                        Desarrollador Full-Stack con 3+
-                        años de experiencia generando
-                        código para empresas de distintos
-                        sectores. Creé tanto aplicaciones
-                        móviles, como páginas web muy
-                        concurridas y con excelentes reseñas.
-                        Especialista en solución de problemas
-                        y trabajo en equipo.
+                        {{ aboutMe.description }}
                     </p>
                 </div>
             </div>
@@ -23,7 +16,40 @@
     </section>
 </template>
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue';
+import { useI18NStore } from '../store/i18n';
 import AboutMeImage1 from './AboutMeImage.vue';
+
+const i18nStore = useI18NStore();
+const lang = computed(() => {
+    return i18nStore.lang;
+});
+let aboutMe = ref({
+    title: "",
+    description: ""
+})
+
+watch(lang, async (newLang) => {
+    setAboutMe(newLang);
+})
+
+setAboutMe(lang.value);
+
+function setAboutMe(newLang: string) {
+    if (newLang === 'English') {
+        aboutMe.value = {
+            title: "About me",
+            description: "Software engineer with +3 years of experience generating code for companies from different sectors with Flutter, Vuejs and Nodejs as my main stack. I developed both mobile and much visited web apps with excellent reviews. Problem solving and teamwork specialist"
+        }
+    }
+    if (newLang === "Español") {
+        aboutMe.value = {
+            title: "Acerca de mi",
+            description: "Desarrollador Full-Stack con 3+ años de experiencia generando código para empresas de distintos sectores. Creé tanto aplicaciones móviles, como páginas web muy concurridas y con excelentes reseñas. Especialista en solución de problemas y trabajo en equipo."
+        }
+    }
+}
+
 </script>
 <style scoped>
 .about-me-section {
