@@ -20,16 +20,20 @@ import Projects from './components/Projects.vue';
 import TechStack from './components/TechStack.vue';
 import Timeline from './components/Timeline.vue';
 import ContactMe from './components/ContactMe.vue';
+
+
+let showModal = false;
 </script>
 
 <style scoped>
 .appbar {
   width: 100vw;
   position: fixed;
+  z-index: 1;
 }
 
 .hero {
-  background-image: url("https://i.giphy.com/media/YnlDGfCxyOIYTDp86I/giphy.webp");
+  background-image: url("./assets/images/background.webp");
   /* The image used */
   background-color: #04070b;
   /* Used if the image is unavailable */
